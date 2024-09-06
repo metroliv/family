@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family List - Government of Makueni</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light "></nav>
+        <a class="navbar-brand" href="#">
+            <img src="imgs/government.jpeg" width="100" height="" alt="">
+        </a>           
+        
+        <h1>Makueni County Government</h1>
+    </nav>
+</header>
+<div class="container mt-5">
+    <h2 class="text-center">List of Registered Families</h2>
+    
+    <!-- Family List Table -->
+    <table class="table table-striped table-bordered mt-4">
+        <thead class="thead-dark">
+        <tr>
+            <th>Family ID</th>
+            <th>Family Name</th>
+            <th>Head of Family</th>
+            <th>Number of Members</th>
+            <th>Gender Distribution</th>
+            <th>Disability Status</th>
+            <th>Financial Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Example Family Entry -->
+        <tr>
+            <td>F001</td>
+            <td>Mutisya Family</td>
+            <td>John Mutisya</td>
+            <td>6</td>
+            <td>Male: 3, Female: 3</td>
+            <td>1 member with disability</td>
+            <td>Ksh 150,000 (total aid received)</td>
+            <td>
+                <a href="family-details.html" class="btn btn-primary btn-sm">View Details</a>
+                <a href="edit-family.html" class="btn btn-warning btn-sm">Edit</a>
+                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>F002</td>
+            <td>Ngugi Family</td>
+            <td>Jane Ngugi</td>
+            <td>4</td>
+            <td>Male: 2, Female: 2</td>
+            <td>No members with disability</td>
+            <td>Ksh 200,000 (total aid received)</td>
+            <td>
+                <a href="family-details.html" class="btn btn-primary btn-sm">View Details</a>
+                <a href="edit-family.html" class="btn btn-warning btn-sm">Edit</a>
+                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        
+        <!-- More Family Entries -->
+        </tbody>
+    </table>
+
+    <!-- Add Family Button -->
+    <div class="text-right">
+        <a href="add-family.html" class="btn btn-success">Register New Family</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS and custom JS -->
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

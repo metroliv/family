@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reports and Analytics - Government of Makueni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Government of Makueni">
+    <meta name="keywords" content="family management, analytics, Makueni government, demographics, disability">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS for chart sizes -->
+    <style>
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        .chart-container .chart {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+<div id="app">
+    <a class="navbar-brand" href="#">
+        <img src="imgs/government.jpeg" width="100" height="" alt="">
+    </a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Makueni Family Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="family-list.html">Family List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Reports and Analytics</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1 class="mb-4">Reports and Analytics</h1>
+        
+        <!-- Overview Section -->
+        <section id="overview" class="mb-5">
+            <h2 class="mb-3">Overview</h2>
+            <p class="lead">
+                This section provides insights into family demographics, gender distribution, disability status, and more. Explore the visualizations and detailed reports below.
+            </p>
+        </section>
+
+        <!-- Family Demographics Section -->
+        <section id="family-demographics" class="mb-5">
+            <h2 class="mb-3">Family Demographics</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Families Registered</h5>
+                            <p class="card-text">1,252 Families</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Families Under Review</h5>
+                            <p class="card-text">236 Families</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gender Distribution Section -->
+        <section id="gender-distribution" class="mb-5">
+            <h2 class="mb-3">Gender Distribution</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gender Distribution in Families</h5>
+                    <div class="chart-container">
+                        <canvas id="genderChart" class="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disability Status Section -->
+        <section id="disability-status" class="mb-2">
+            <h2 class="mb-3">Disability Status</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Disabled Members</h5>
+                    <div class="chart-container">
+                        <canvas id="disabilityChart" class="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Age Distribution Section -->
+        <section id="age-distribution" class="mb-5">
+            <h2 class="mb-3">Age Distribution</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Family Members by Age Group</h5>
+                    <div class="chart-container">
+                        <canvas id="ageChart" class="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Distribution Section -->
+        <section id="location-distribution" class="mb-5">
+            <h2 class="mb-3">Location Distribution</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Families by Location</h5>
+                    <div class="chart-container">
+                        <canvas id="locationChart" class="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Bootstrap Bundle with Popper.js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Chart.js Initialization -->
+    <script>
+        const ctxGender = document.getElementById('genderChart').getContext('2d');
+        const genderChart = new Chart(ctxGender, {
+            type: 'pie',
+            data: {
+                labels: ['Male', 'Female'],
+                datasets: [{
+                    data: [630, 622],
+                    backgroundColor: ['#007bff', '#e83e8c'],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' (' + Math.round(tooltipItem.raw / 1252 * 100) + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const ctxDisability = document.getElementById('disabilityChart').getContext('2d');
+        const disabilityChart = new Chart(ctxDisability, {
+            type: 'doughnut',
+            data: {
+                labels: ['Disabled', 'Non-Disabled'],
+                datasets: [{
+                    data: [120, 1132],
+                    backgroundColor: ['#28a745', '#dc3545'],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' (' + Math.round(tooltipItem.raw / 1252 * 100) + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const ctxAge = document.getElementById('ageChart').getContext('2d');
+        const ageChart = new Chart(ctxAge, {
+            type: 'bar',
+            data: {
+                labels: ['0-14 years', '15-34 years', '35-54 years', '55+ years'],
+                datasets: [{
+                    label: 'Number of Family Members',
+                    data: [350, 500, 300, 102],
+                    backgroundColor: '#007bff',
+                    borderColor: '#0056b3',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' (' + Math.round(tooltipItem.raw / 1252 * 100) + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const ctxLocation = document.getElementById('locationChart').getContext('2d');
+        const locationChart = new Chart(ctxLocation, {
+            type: 'bar',
+            data: {
+                labels: ['Village A', 'Village B', 'Village C', 'Village D', 'Village E'],
+                datasets: [{
+                    label: 'Number of Families',
+                    data: [200, 300, 175, 200, 377],
+                    backgroundColor: '#17a2b8',
+                    borderColor: '#117a8b',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' families';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+</body>
+</html>

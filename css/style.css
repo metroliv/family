@@ -1,0 +1,52 @@
+/* Add all your styles here */
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.hero {
+    color: white;
+    padding: 5rem 0;
+}
+
+/* Testimonials Section */
+.testimonial {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+}
+
+/* Upcoming Events Section */
+.events .event {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+/* FAQs Section */
+.faqs .accordion-item {
+    border: 1px solid #ddd;
+}
+
+/* Newsletter Subscription Section */
+.newsletter {
+    background: #f8f9fa;
+    padding: 2rem 0;
+}
+
+/* Data Visualization Section */
+.data-visualization {
+    background: #f8f9fa;
+    padding: 2rem 0;
+}
+
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        .chart-container .chart {
+            height: 100%;
+            width: 100%;
+        }
+    
